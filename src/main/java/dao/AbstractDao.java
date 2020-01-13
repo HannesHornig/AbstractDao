@@ -49,9 +49,9 @@ public abstract class AbstractDao<T> implements GenericDao<T> {
 
 		entityManager.getTransaction().begin();
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-		CriteriaDelete<T> firmaDelete = criteriaBuilder.createCriteriaDelete(classType);
-		firmaDelete.from(classType);
-		int numberOfDeletedFirmen = entityManager.createQuery(firmaDelete).executeUpdate();
+		CriteriaDelete<T> delete = criteriaBuilder.createCriteriaDelete(classType);
+		delete.from(classType);
+		int numberOfDeletedFirmen = entityManager.createQuery(delete).executeUpdate();
 		entityManager.getTransaction().commit();
 		return numberOfDeletedFirmen;
 
